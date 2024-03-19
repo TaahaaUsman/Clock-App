@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Clock</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #ab06ec, #0595e9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .squareBox{
+            width: 200px;
+            height: 150px;
+            background-color: rgb(241, 8, 137);
+            border-radius: 5px;
+            position: relative;
+            left: 130px;
+            top: -10%;
+        }
+        .mainContent{
+            width: 550px;
+            height: 150px;
+            color: white;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            background-color: rgba(235, 0, 255, 0.30);
+            backdrop-filter: blur(10px);
+        }
+        .circleBox{
+            width: 200px;
+            height: 150px;
+            background-color: #0ea9f1;
+            border-radius: 50%;
+            position: relative;
+            left: -130px;
+            top: 10%;
+        }
+        .mainContent span{
+            font-size: 80px;
+            width: 80px;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+        }
+        .mainContent span::after{
+            font-size: 14px;
+            position: absolute;
+            bottom: -2px;
+            left: 50px;
+            transform: translateX(-50%);
+        }
+        #hrs::after{
+            content: "HOURS";
+        }
+        #min::after{
+            content: "MINATES";
+        }
+        #sec::after{
+            content: "SECONDS";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="squareBox"></div>
+        <div class="mainContent">
+            <span id="hrs">00</span>
+            <span>:</span>
+            <span id ="min">00</span>
+            <span>:</span>
+            <span id = "sec">00</span>
+        </div>
+        <div class="circleBox"></div>
+    </div>
+    <script>
+        let hrs = document.getElementById("hrs");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+
+        setInterval(()=>{
+             let currenttime = new Date();
+            hrs.innerHTML = (currenttime.getHours()<10?"0":"") + currenttime.getHours();
+            min.innerHTML = (currenttime.getMinutes()<10?"0":"") + currenttime.getMinutes();
+            sec.innerHTML = (currenttime.getSeconds()<10?"0":"") + currenttime.getSeconds();
+         },1000);
+    </script>
+    <!-- Major
+        HTML 
+            1-Real world expample
+        CSS 
+            1- How to add a box without html using propertie of css ::after
+            2- backdrop-filter
+            3- content propertie : is used to add content in html
+        javascript
+            1- Real world expample
+            2- inline if condition
+            3- Date and its methods  -->
+</body>
+</html>
